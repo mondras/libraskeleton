@@ -1,0 +1,108 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"> </script>
+	<script>
+		$(document).ready(function(){
+			$('#save').click(function(){
+				alert("saved");
+			});
+
+			$('#open').click(function(){
+				$('#open-div').show();
+			});
+			$('#open-div li').click(function(){
+				alert("type curve loaded");
+				$('#open-div').hide();
+			});
+			$('#addSegment').click(function(){
+				var segment = document.createElement('li');
+				segment.innerHTML = "Segment"
+				$(segment).appendTo($('#segments-list'));
+			});
+			$('#segments-list li').live('click', function(){
+				var content = "Segment "+($('#segments-list li').index($(this))+1);
+				content += "<br/ > Segment input and output displayed here "
+				$('#segment-data').html(content);
+				$('#edit-segment').show();
+			});
+
+			$('#save-seg').click(function(){
+				alert("segment data saved");
+				$('#edit-segment').hide();
+			});
+			$('#canc-seg').click(function(){
+				$('#edit-segment').hide();
+			});
+
+			$('#title').click(function(){
+				if ($(this).attr('editable') == "true"){
+					var curveName = $(this).html();
+					$('#title').html("<input id='edit-title' type='text' value='"+curveName+"' / >");
+					$('#title').attr('editable', 'false');
+					$('#edit-title').focus();
+				}
+			});
+
+			$('#edit-title').live('blur', function() {
+				var title = $('#edit-title').attr('value');
+				if (title.length > 0){
+					$('#title').html($('#edit-title').attr('value')); 
+					$('#title').attr('editable', 'true'); 
+				}
+			});
+		});
+
+	
+	</script>
+</head>
+
+<body>
+	<h1>Project #1 Decision Tree</h1>
+	<h2>Navigation</h2>
+	<ul>
+		<li><a href="decision_tree.html">Decision Tree</a></li>
+		<li><a href="type_curves.html">Type Curves</a></li>
+		<li><a href="data_sets.html">Data sets</a></li>        
+	</ul>
+
+	<hr>
+	<div style="border:1px dotted black; width:80%";> 
+		<span id="title" editable="true">untitled</span> <br/ >
+		<!-- input type="text" placeholder="untitled" / -->
+		<button id="save"> Save </button>
+		<button id="open"> Open </button>
+	</div>
+	<div id="open-div" style="display:none;">
+		<span> Select type curve </span>
+		<ul>
+			<li>TC1</li>
+			<li>TC2</li>
+			<li>TC3</li>
+		</ul>
+	</div>
+
+	<div>
+		Segments <br/>
+		<button id="addSegment"> Add </button>
+		<div>
+			<ul id="segments-list">
+				<li> Segment </li>
+			</ul>
+		</div>
+		<div id="edit-segment" style="display:none;">
+			<div id="segment-data" style="border:1px dotted black; width:60%">
+			</div>
+			<div>
+				<button id="save-seg"> Save </button>
+				<button id="canc-seg"> Cancel </button>
+			</div>
+		</div>
+	</div>
+	
+	<div>
+		Graphs
+	</div>
+
+
+</body>
+</html>
