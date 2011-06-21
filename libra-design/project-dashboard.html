@@ -1,0 +1,135 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.delete-tc').live('click', function(){
+				$(this).parent().parent().remove();
+			});
+
+			$('.open-tc').live('click', function(){
+				$('#allTC').hide();
+				$('#oneTC').show();
+			});
+
+			$('#tc-back').live('click', function(){
+				$('#oneTC').hide();
+				$('#allTC').show();
+			});
+
+			$('#seg-edit').live('click', function(){
+				$('segEdit').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header">
+		<div id="hContent">
+			<div id="logo"> Libraoil </div>
+
+
+			<div id="heading">
+				Project 1
+			</div>
+			<div id="menu">
+				<nav id="mainNav">
+					<ul>
+						<li><a href="dashboard.html"> Dashboard </a><li>
+						<li><a> Decision Tree </a></li>
+						<li class="current"><a> Type Curves </a></li>
+						<li><a> Data Sets </a></li>
+						<li><a> Settings </a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div id="main">
+		<div id="mContent">
+			<div id="allTC">
+				<div id="left">
+					<div class="inner">
+						<input id="newTC" type="button" class="redbutton" value="New Type Curve" />
+					</div>
+				</div>
+				<div id="right">
+					<div class="inner typecurves">
+						<ul id="tclist">
+							<li class="tcBox">
+								<span class="name"> Type Curve 1 </span>
+								<ul class="projectMenu">
+									<li class="open-tc"> Open </li>
+									<li> Copy </li>
+									<li> Rename </li>
+									<li class="delete-tc"> Delete </li>
+								</ul>
+							</li>
+							<li class="tcBox">
+								<span class="name"> Type Curve 2 </span>
+								<ul class="projectMenu">
+									<li class="open-tc"> Open </a> </li>
+									<li> Copy </li>
+									<li> Rename </li>
+									<li class="delete-tc"> Delete </li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="oneTC">
+				<span class="name"> Type Curve Name </span>
+				<div id="tcMenu">
+					<input type="button" class="greenbutton" value="Rename" />
+					<input type="button" class="greenbutton" value="Save" />
+					<input type="button" class="greenbutton" value="Add Segment" />
+					<input type="button" class="greenbutton" id="tc-back" value="Close" />
+				</div>
+				<div id="segList">
+					<div class="inner">
+						<ul class="segmentsList">
+							<li class="segmentBox">
+								<span class="name"> Segment 1 </span>
+								<ul class="projectMenu segmentMenu">
+									<li class="edit-segment"> Edit </li>
+									<li> Delete </li>
+								</ul>
+							</li>
+							<li class="segmentBox">
+								<span class="name"> Segment 2 </span>
+								<ul class="projectMenu segmentMenu">
+									<li> Edit </li>
+									<li> Delete </li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="segEdit">
+					<div class="inner">
+						<input type="select" value="Forecast Type" />
+						<input type="text" value="Initial Rate" />
+						<input type="text" value="Initial Effective Decline" />
+						<input type="text" value="Hyperbolic Exponent" />
+						<input type="text" value="Forecast Until" />
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer">
+			<div id="fContent">
+				Footer
+			</div>
+	</div>
+
+</body>
+</html>

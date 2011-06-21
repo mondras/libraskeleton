@@ -1,0 +1,98 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.delete-project').live('click', function(){
+				$(this).parent().parent().remove();
+			});
+
+			$('#newProject').click(function(){
+				var pli = document.createElement('li');
+				pli.className='projectBox';
+				var nsp = document.createElement('span');
+				nsp.className='name';
+				$(nsp).html('Untitled');
+				pli.appendChild(nsp);
+
+				var pmenu = document.createElement('ul');
+				pmenu.className='projectMenu';
+				var pmop = document.createElement('li');
+				var pmcp = document.createElement('li');
+				var pmrn = document.createElement('li');
+				var pmdl = document.createElement('li');
+				$(pmop).html('Open');
+				$(pmcp).html('Copy');
+				$(pmrn).html('Rename');
+				$(pmdl).html('Delete');
+				pmdl.className='delete-project';
+				pmenu.appendChild(pmop);
+				pmenu.appendChild(pmcp);
+				pmenu.appendChild(pmrn);
+				pmenu.appendChild(pmdl);
+				pli.appendChild(pmenu);
+
+				$(pli).appendTo('#projectsList');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header">
+		<div id="hContent">
+			<div id="logo"> Libraoil </div>
+
+
+			<div id="heading" class="noMenu">
+				Dashboard
+			</div>
+		</div>
+	</div>
+
+	<div id="main">
+		<div id="mContent">
+			<div id="left">
+				<div class="inner">
+					<input id="newProject" type="button" class="redbutton" value="New Project" />
+				</div>
+			</div>
+
+			<div id="right">
+				<div class="inner projects">
+					<ul id="projectsList">
+						<li class="projectBox">
+							<span class="name"> Project 1 </span>
+							<ul class="projectMenu">
+								<li><a href="project-dashboard.html"> Open </a> </li>
+								<li> Copy </li>
+								<li> Rename </li>
+								<li class="delete-project"> Delete </li>
+							</ul>
+						</li>
+						<li class="projectBox">
+							<span class="name"> Project 2 </span>
+							<ul class="projectMenu">
+								<li> Open </li>
+								<li> Copy </li>
+								<li> Rename </li>
+								<li class="delete-project"> Delete </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div id="footer">
+			<div id="fContent">
+				Footer
+			</div>
+	</div>
+
+</body>
+</html>
